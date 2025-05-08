@@ -2,11 +2,15 @@ package com.jingineering.multithreading.abhayani;
 
 import java.time.Duration;
 import java.time.LocalTime;
-// 5761456
+
+/*
+v1) for 100000 numbers we have: 9592 primes & took PT0.00518S
+v1) for 100000000 numbers we have: 5761455 primes & took PT35.823497S
+ */
 public class OneHundresMillionPrimesV1BruteForce {
     public static void main(String[] args) {
         LocalTime start = LocalTime.now();
-        int limit = 100_000_000;
+        int limit = 100_000;
         System.out.println("v1) for " + limit + " numbers we have: " + getTotalPrimesUntil(limit)
                 + " primes & took " + Duration.between(start, LocalTime.now()));
     }

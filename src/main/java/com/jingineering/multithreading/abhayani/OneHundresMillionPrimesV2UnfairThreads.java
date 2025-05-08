@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /*
-v1) for 100000 numbers we have: 9592 primes & took PT0.005003S
-v1) for 100000000 numbers we have: 5761455 primes & took PT36.209807S
+v1) for 100000 numbers we have: 9592 primes & took PT0.00518S
+v1) for 100000000 numbers we have: 5761455 primes & took PT35.823497S
 
 v2) for 100000 numbers we have: 9592 primes & took PT0.022969S
 v2) for 100000000 numbers we have: 5761455 primes & took PT6.738088S
