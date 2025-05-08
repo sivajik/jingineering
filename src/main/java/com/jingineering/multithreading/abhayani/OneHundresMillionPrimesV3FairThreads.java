@@ -2,7 +2,10 @@ package com.jingineering.multithreading.abhayani;
 
 import java.time.Duration;
 import java.time.LocalTime;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /*
@@ -76,7 +79,6 @@ public class OneHundresMillionPrimesV3FairThreads {
                 return false;
             }
         }
-        //System.out.println(n + " is prime");
         return true;
     }
 }
