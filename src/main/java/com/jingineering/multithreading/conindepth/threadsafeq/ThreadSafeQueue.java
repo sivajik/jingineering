@@ -1,4 +1,4 @@
-package com.jingineering.multithreading.abhayani.threadsafeq;
+package com.jingineering.multithreading.conindepth.threadsafeq;
 
 import java.util.ArrayList;
 import java.util.List;

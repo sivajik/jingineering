@@ -1,4 +1,4 @@
-package com.jingineering.multithreading.abhayani;
+package com.jingineering.multithreading.conindepth.One100MillPrimes;
 
 import java.time.Duration;
 import java.time.LocalTime;

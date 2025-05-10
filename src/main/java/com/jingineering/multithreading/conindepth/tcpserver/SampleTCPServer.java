@@ -1,4 +1,4 @@
-package com.jingineering.multithreading.abhayani.tcpserver;
+package com.jingineering.multithreading.conindepth.tcpserver;
 
 import java.io.*;
 import java.net.ServerSocket;
