@@ -30,7 +30,7 @@ public class ThreadSafeQueue {
 }
 
 class ConcurrentQueue {
-    // Internally ArrayList using array and it is NOT threadsafe - which is what we need
+    // Internally ArrayList uses array and it is NOT threadsafe - which is what we need
     List<Integer> queue = new ArrayList<>();
 
     public void enqueue(int item) {
@@ -38,12 +38,12 @@ class ConcurrentQueue {
     }
 
     public int dequeue() {
-        if (!queue.isEmpty()) {
-            int elem = queue.getFirst();
-            queue.removeFirst();
-            return elem;
+        if (queue.isEmpty()) {
+            throw new RuntimeException("Queue is empty");
         }
-        throw new RuntimeException("Queue is empty");
+        int elem = queue.getFirst();
+        queue.removeFirst();
+        return elem;
     }
 
     public int getSize() {
