@@ -1,0 +1,52 @@
+package com.jingineering.multithreading.abhayani.threadsafeq;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class ThreadSafeQueue {
+    public static void main(String[] args) throws InterruptedException {
+        ConcurrentQueue q = new ConcurrentQueue();
+        ExecutorService es = Executors.newFixedThreadPool(1000);
+        Random r = new Random();
+        for (int i = 0; i < 1000000; i++) {
+            es.execute(() -> {
+                q.enqueue(r.nextInt(1, 1000000));
+            });
+        }
+        es.shutdown();
+        if (!es.awaitTermination(5, TimeUnit.MINUTES)) {
+            System.err.println("Some tasks did not complete within the timeout.");
+            es.shutdownNow();
+        } else {
+            System.out.println("All tasks are completed their job...");
+        }
+        System.out.println(q.getSize());
+        System.out.println("Program exiting....");
+    }
+}
+
+class ConcurrentQueue {
+    // Internally ArrayList using array and it is NOT threadsafe - which is what we need
+    List<Integer> queue = new ArrayList<>();
+
+    public void enqueue(int item) {
+        queue.add(item);
+    }
+
+    public int dequeue() {
+        if (!queue.isEmpty()) {
+            int elem = queue.getFirst();
+            queue.removeFirst();
+            return elem;
+        }
+        throw new RuntimeException("Queue is empty");
+    }
+
+    public int getSize() {
+        return queue.size();
+    }
+}
