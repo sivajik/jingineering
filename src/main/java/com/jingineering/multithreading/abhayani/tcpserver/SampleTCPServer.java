@@ -34,6 +34,7 @@ public class SampleTCPServer {
     }
 
     private static void doSomeWork(Socket socket) throws IOException {
+        // not reading for now..
         /*BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         String input = br.readLine();
         System.out.println("came from client: " + input);
