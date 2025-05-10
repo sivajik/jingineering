@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ThreadSafeQueue {
     public static void main(String[] args) throws InterruptedException {
@@ -32,21 +34,29 @@ public class ThreadSafeQueue {
 class ConcurrentQueue {
     // Internally ArrayList uses array and it is NOT threadsafe - which is what we need
     List<Integer> queue = new ArrayList<>();
+    Lock myLock = new ReentrantLock();
 
     public void enqueue(int item) {
+        myLock.lock();
         queue.add(item);
+        myLock.unlock();
     }
 
     public int dequeue() {
+        myLock.lock();
         if (queue.isEmpty()) {
             throw new RuntimeException("Queue is empty");
         }
         int elem = queue.getFirst();
         queue.removeFirst();
+        myLock.unlock();
         return elem;
     }
 
     public int getSize() {
-        return queue.size();
+        myLock.lock();
+        int size = queue.size();
+        myLock.unlock();
+        return size;
     }
 }
