@@ -23,7 +23,6 @@ public class ThreadPoolImpl {
     }
 }
 
-
 class MyThreadPool {
     /*
         Max of 10 tasks can be handles (as my mac has 10 cores only).
