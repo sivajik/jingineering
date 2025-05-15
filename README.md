@@ -1,2 +1,2 @@
 # jingineering
-The Joy of Engineering. That's it.
+The Joy of Engineering.
