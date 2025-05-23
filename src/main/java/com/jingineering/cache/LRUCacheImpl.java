@@ -66,7 +66,6 @@ class LRUCache {
         return lastNode.key; // return the key, not the value.
     }
 
-
     private void moveNodeToHead(DListNode node) {
         deleteNodeHere(node);
         moveToHead(node);
